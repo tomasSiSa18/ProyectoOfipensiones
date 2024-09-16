@@ -1,0 +1,44 @@
+db.createCollection("Instituciones", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["_id", "nombre", "direccion", "telefono", "cursos", "estudiantes", "proovedorCobranza", "gestorContable", "jefeAdministrativo", "gestorFinanciero"],
+            properties: {
+
+                _id: {
+                    bsonType: "int"
+                },
+                nombre: {
+                    bsonType: "string"
+                },
+                direccion: {
+                    bsonType: "string"
+                },
+                telefono: {
+                    bsonType: "long"
+                },
+                cursos: {
+                    bsonType: "array",
+                    items: {
+                        bsonType: "int"
+                    }
+                },
+                cursos: {
+                    bsonType: "array",
+                    items: {
+                        bsonType: "int"
+                    }
+                },
+                proovedorCobranza: {
+                    bsonType:"int"
+                },
+                gestorContable: {
+                    bsonType:"int"
+                },
+                jefeAdministrativo: {
+                    bsonType:"int"
+                }                
+            }
+        }
+    }
+})
