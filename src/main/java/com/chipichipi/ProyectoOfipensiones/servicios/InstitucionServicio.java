@@ -19,5 +19,10 @@ public class InstitucionServicio {
     public Collection<Institucion> getInstituciones() {
         return institucionRepository.darInstituciones();
     }
+
+    @Transactional
+    public Institucion crearInstitucion(Institucion institucion) {
+       return institucionRepository.save(institucion);
+    }
     
 }
