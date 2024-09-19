@@ -29,7 +29,7 @@ public class ControladorInstituciones {
 
     @PostMapping("/new")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Institucion crearInstitucion(@RequestBody Institucion institucion) {
+    public Institucion crearInstitucion(Institucion institucion) {
         Institucion institucionNueva = institucionServicio.crearInstitucion(institucion);
         return institucionNueva;
     }
