@@ -27,7 +27,7 @@ public class ControladorInstituciones {
         return institucionServicio.getInstituciones();
     }
 
-    @PostMapping("/new")
+    @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     public Institucion crearInstitucion(@RequestBody Institucion institucion) {
         Institucion institucionNueva = institucionServicio.crearInstitucion(institucion);
