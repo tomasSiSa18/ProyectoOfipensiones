@@ -22,7 +22,8 @@ public class InstitucionServicio {
 
     @Transactional
     public Institucion crearInstitucion(Institucion institucion) {
-       return institucionRepository.save(institucion);
+
+        return institucionRepository.save(institucion);
     }
     
 }
