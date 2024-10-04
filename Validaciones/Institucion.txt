@@ -1,43 +1,64 @@
 db.createCollection("Instituciones", {
     validator: {
         $jsonSchema: {
-            bsonType: "object",
-            required: ["_id", "nombre", "direccion", "telefono", "cursos", "estudiantes", "proovedorCobranza", "gestorContable", "jefeAdministrativo", "gestorFinanciero"],
+            bsonType: 'object',
+            required: [
+            '_id',
+            'nombre',
+            'direccion',
+            'telefono',
+            'cursos',
+            'estudiantes',
+            'cronogramas',
+            'proovedorCobranza',
+            'gestorContable',
+            'jefeAdministrativo',
+            'gestorFinanciero'
+            ],
+            
             properties: {
-
-                _id: {
-                    bsonType: "int"
-                },
-                nombre: {
-                    bsonType: "string"
-                },
-                direccion: {
-                    bsonType: "string"
-                },
-                telefono: {
-                    bsonType: "long"
-                },
-                cursos: {
-                    bsonType: "array",
-                    items: {
-                        bsonType: "int"
-                    }
-                },
-                cursos: {
-                    bsonType: "array",
-                    items: {
-                        bsonType: "int"
-                    }
-                },
-                proovedorCobranza: {
-                    bsonType:"int"
-                },
-                gestorContable: {
-                    bsonType:"int"
-                },
-                jefeAdministrativo: {
-                    bsonType:"int"
-                }                
+            _id: {
+                bsonType: 'int'
+            },
+            nombre: {
+                bsonType: 'string'
+            },
+            direccion: {
+                bsonType: 'string'
+            },
+            telefono: {
+                bsonType: 'long'
+            },
+            cursos: {
+                bsonType: 'array',
+                items: {
+                bsonType: 'int'
+                }
+            },
+            estudiantes: {
+                bsonType: 'array',
+                items: {
+                bsonType: 'int'
+                }
+            },
+            cronogramas: {
+                bsonType: 'array',
+                items: {
+                bsonType: 'int'
+                }
+            },
+            proovedorCobranza: {
+                bsonType: 'int'
+            },
+            gestorContable: {
+                bsonType: 'int'
+            },
+            jefeAdministrativo: {
+                bsonType: 'int'
+            },
+            gestorFinanciero: {
+                bsonType: 'int'
+            }
             }
         }
     }

@@ -1,0 +1,37 @@
+db.createCollection("Facturas", {
+    validator: {
+        $jsonSchema: {
+
+            bsonType: 'object',
+            required: [
+            '_id',
+            'fechaLimitePago',
+            'fechaInicial',
+            'pago',
+            'valor'  
+            ],
+
+            properties: {
+
+                _id: {
+                    bsonType: 'int'
+                },
+                fechaLimitePago: {
+                    bsonType: 'date'
+                },
+                fechaInicial:  {
+                    bsonType: 'date'
+                },
+                pago: {
+                    bsonType: 'array',
+                    items: {
+                        bsonType: 'int'
+                    }
+                },
+                valor: {
+                    bsonType: 'double'
+                }
+            } 
+        }
+    }
+})

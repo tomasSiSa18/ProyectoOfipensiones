@@ -1,0 +1,10 @@
+[{"_id":1,"fechaLimitePago": ISODate("2024-11-27T11:42:50.000Z"),"fechaInicial": ISODate("2024-08-15T12:39:50.000Z"),"pago":[],"valor":7993292.39},
+{"_id":2,"fechaLimitePago":ISODate("2024-11-27T16:28:53.000Z"),"fechaInicial":ISODate("2024-08-09T07:49:34.000Z"),"pago":[],"valor":8786746.92},
+{"_id":3,"fechaLimitePago":ISODate("2024-11-30T18:03:59.000Z"),"fechaInicial":ISODate("2024-08-18T20:05:09.000Z"),"pago":[],"valor":2688121.26},
+{"_id":4,"fechaLimitePago":ISODate("2024-10-22T20:39:22.000Z"),"fechaInicial":ISODate("2024-08-17T18:21:24.000Z"),"pago":[],"valor":8876985.62},
+{"_id":5,"fechaLimitePago":ISODate("2024-11-05T09:22:56.000Z"),"fechaInicial":ISODate("2024-08-11T05:02:34.000Z"),"pago":[],"valor":6179888.75},
+{"_id":6,"fechaLimitePago":ISODate("2024-10-24T13:14:20.000Z"),"fechaInicial":ISODate("2024-08-19T09:22:58.000Z"),"pago":[],"valor":4042715.34},
+{"_id":7,"fechaLimitePago":ISODate("2024-10-28T18:46:15.000Z"),"fechaInicial":ISODate("2024-08-17T03:59:23.000Z"),"pago":[],"valor":9553312.70},
+{"_id":8,"fechaLimitePago":ISODate("2024-11-30T11:42:41.000Z"),"fechaInicial":ISODate("2024-08-16T05:29:14.000Z"),"pago":[],"valor":3755129.76},
+{"_id":9,"fechaLimitePago":ISODate("2024-10-30T17:05:48.000Z"),"fechaInicial":ISODate("2024-08-13T04:13:02.000Z"),"pago":[],"valor":8573338.81},
+{"_id":10,"fechaLimitePago":ISODate("2024-10-17T10:57:21.000Z"),"fechaInicial":ISODate("2024-08-18T02:56:45.000Z"),"pago":[],"valor":8804796.94}]

@@ -10,7 +10,7 @@
     </TestPlan>
     <hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Grupo de POST">
-        <intProp name="ThreadGroup.num_threads">1</intProp>
+        <intProp name="ThreadGroup.num_threads">100</intProp>
         <intProp name="ThreadGroup.ramp_time">10</intProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
@@ -20,9 +20,9 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Petición PostJSON">
-          <stringProp name="HTTPSampler.domain">34.72.107.155</stringProp>
-          <stringProp name="HTTPSampler.port">8080</stringProp>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Petición PostJSON" enabled="true">
+          <stringProp name="HTTPSampler.domain">34.54.6.52</stringProp>
+          <stringProp name="HTTPSampler.port">80</stringProp>
           <stringProp name="HTTPSampler.path">/ofipensiones/instituciones/new</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
@@ -51,7 +51,7 @@
           </elementProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Reporte resumen">
+          <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Reporte resumen 15 Hilos" enabled="true">
             <boolProp name="ResultCollector.error_logging">false</boolProp>
             <objProp>
               <name>saveConfig</name>
