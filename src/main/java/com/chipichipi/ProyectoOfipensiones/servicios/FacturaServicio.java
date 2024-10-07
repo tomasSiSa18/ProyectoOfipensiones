@@ -20,4 +20,9 @@ public class FacturaServicio {
         return facturasRepository.darFacturas();
     }
     
+    @Transactional
+    public Collection<Factura> darFacturasEstudiante(int idEstudiante){
+        return facturasRepository.darFacturasEstudiante(idEstudiante);
+    }
+    
 }

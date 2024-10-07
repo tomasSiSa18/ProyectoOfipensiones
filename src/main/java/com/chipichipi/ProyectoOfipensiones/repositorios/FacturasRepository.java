@@ -11,5 +11,8 @@ public interface FacturasRepository extends MongoRepository<Factura, Integer>{
 
     @Query("{}")
     Collection<Factura> darFacturas();
+
+    @Query("{estudiante: ?0}")
+    Collection<Factura> darFacturasEstudiante(int idEstudiante);
     
 }

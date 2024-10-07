@@ -9,6 +9,7 @@ public class Factura {
 
     @Id
     private int id;
+    private int estudiante;
     private Date fechaLimitePago;
     private Date fechaInicial;
     private int[] pago;
@@ -16,9 +17,10 @@ public class Factura {
 
     public Factura() {}
 
-    public Factura(int idN, Date fechaLimiteN, Date fechaInicialN, int[] pagoN, int valorN) {
+    public Factura(int idN, int estudianteN, Date fechaLimiteN, Date fechaInicialN, int[] pagoN, int valorN) {
 
         this.id = idN;
+        this.estudiante = estudianteN;
         this.fechaLimitePago = fechaLimiteN;
         this.fechaInicial = fechaInicialN;
         this.pago = pagoN;
@@ -28,6 +30,12 @@ public class Factura {
 
     public int getId() {
         return id;
+    }
+    public int getEstudiante(){
+        return estudiante;
+    }
+    public void setEstudiante(int estudianteN) {
+        this.estudiante = estudianteN;
     }
     public void setId(int id) {
         this.id = id;
