@@ -12,7 +12,7 @@ import com.chipichipi.ProyectoOfipensiones.modelo.Factura;
 import com.chipichipi.ProyectoOfipensiones.servicios.FacturaServicio;
 
 @RestController
-@RequestMapping("/facturas")
+@RequestMapping("/facturas") 
 public class ControladorFacturacion {
 
     @Autowired
