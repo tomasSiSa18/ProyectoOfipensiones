@@ -19,11 +19,6 @@ public class ControladorPrincipal {
         return "index";
     }
 
-    @RequestMapping("/login/oauth2/code/okta")
-    public String login() {
-        return "login";
-    }
-
     @GetMapping("/health")
     @ResponseStatus(code = HttpStatus.OK)
     @ResponseBody
