@@ -26,6 +26,7 @@ public class ControladorFacturacion {
     @GetMapping("/estudiante")
     public Collection<Factura> facturasEstudiante(@RequestParam("idEstudiante") int idEstudiante){
         return facturaServicio.darFacturasEstudiante(idEstudiante);
+        
     }
     
 }
