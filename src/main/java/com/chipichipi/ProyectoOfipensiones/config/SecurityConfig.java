@@ -3,6 +3,7 @@ package com.chipichipi.ProyectoOfipensiones.config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
@@ -15,6 +16,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity(prePostEnabled = true) // Usa @EnableMethodSecurity en lugar de @EnableGlobalMethodSecurity
 public class SecurityConfig {
 
     @Value("${okta.oauth2.issuer}")
@@ -26,14 +28,14 @@ public class SecurityConfig {
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/").permitAll()
-                .anyRequest().authenticated()
+                .requestMatchers("/").permitAll() 
+                .anyRequest().authenticated() 
             )
-            .oauth2Login(withDefaults())
-
-            // configure logout with Auth0
+            .oauth2Login(withDefaults()) 
+            
             .logout(logout -> logout
                 .addLogoutHandler(logoutHandler()));
+
         return http.build();
     }
 
