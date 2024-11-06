@@ -1,6 +1,8 @@
 package com.chipichipi.ProyectoOfipensiones.controladores;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.health.Health;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,9 @@ public class ControladorPrincipal {
     @Autowired
     private SendEmailService sendEmailService;
 
+    @Autowired
+    private MongoTemplate mongoTemplate;
+
     @RequestMapping("/")
     public String index() {
         return "index";
@@ -25,7 +30,18 @@ public class ControladorPrincipal {
     @ResponseStatus(code = HttpStatus.OK)
     @ResponseBody
     public String health() {
-        return "OK";
+
+         try {
+            // Execute a simple MongoDB operation to check health
+            mongoTemplate.executeCommand("{ ping: 1 }");
+            return "OK";
+
+        } catch (Exception e) {
+
+            sendEmailService.sendEmail("sierratomy@gmail.com", "La base de datos actual en el sistema no está con vida.", "ATENCION BASE DE DATOS");
+            return "Naaaa";
+        }
+
     }
 
     @RequestMapping("/mandarCorreo")
