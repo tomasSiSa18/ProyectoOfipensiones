@@ -2,20 +2,20 @@ package com.chipichipi.ProyectoOfipensiones.modelo;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.annotation.Id;
-import org.bson.types.ObjectId;
 
-@Document(collection = "usuarios")
+
+@Document(collection = "Usuarios")
 public class Usuario {
     @Id
-    private ObjectId id;  
+    private int id;  
     private String nombre;
     private String tipoidentificacion;
     private String numeroidentificacion;
     private int institucionasociada;
-    public ObjectId getId() {
+    public int getId() {
         return id;
     }
-    public void setId(ObjectId id) {
+    public void setId(int id) {
         this.id = id;
     }
     public String getNombre() {
