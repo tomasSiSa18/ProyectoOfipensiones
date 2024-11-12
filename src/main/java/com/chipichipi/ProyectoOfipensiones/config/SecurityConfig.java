@@ -12,7 +12,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.io.IOException;
 
-import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
@@ -28,11 +27,12 @@ public class SecurityConfig {
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/").permitAll() 
-                .anyRequest().authenticated() 
+                .requestMatchers("/").permitAll()  // Permite acceso a la raíz
+                .anyRequest().authenticated()  // Requiere autenticación para el resto
             )
-            .oauth2Login(withDefaults()) 
-            
+            .oauth2Login(oauth2 -> oauth2
+                .defaultSuccessUrl("/home", true)  // Redirige a /ofipensiones/home después del login
+            )
             .logout(logout -> logout
                 .addLogoutHandler(logoutHandler()));
 
