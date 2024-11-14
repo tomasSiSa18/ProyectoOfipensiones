@@ -19,5 +19,13 @@ public interface FacturasRepository extends MongoRepository<Factura, Integer>{
     @Query("{_id: ?0}")
     @Update("{$inc: {valor: ?1}}")
     void aplicarDescuento(Integer id_factura, int amount);
+
+    @Query("{responsable_economico: ?0}")
+    Collection<Factura> darFacturasResponsableEconomico(int responsable_economico);
+
+    @Query("{institucionasociada: ?0}")
+    Collection<Factura> darFacturasGestorContable(Integer institucion);
+
+    
     
 }

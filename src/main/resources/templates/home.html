@@ -9,20 +9,20 @@
     <p>Haz iniciado sesión como: <strong th:text="${rol}"></strong></p>
 
     <div th:if="${rol == 'ResponsableEconomico'}">
-        <form th:action="@{/facturas/{id}(id=${id})}" method="get">
+        <form th:action="@{/facturas/{rol}/{id}(rol=${rol}, id=${id})}" method="get">
             <button type="submit">Consultar Facturas de mis hijos</button>
         </form>
     </div>
 
     <div th:if="${rol == 'GestorContable'}">
-        <form th:action="@{/facturas/{id}(id=${id})}" method="get">
+        <form th:action="@{/facturas/{rol}/{id}(rol=${rol}, id=${id})}" method="get">
             <button type="submit">Consultar Facturas de mi institucion</button>
         </form>
     </div>
 
 
     <div th:if="${rol == 'AdministradorOfipensiones'}">
-        <form th:action="@{/facturas/{id}(id=${id})}" method="get">
+        <form th:action="@{/facturas/{rol}/{id}(rol=${rol}, id=${id})}" method="get">
             <button type="submit">Consultar todas las facturas</button>
         </form>
     </div>
