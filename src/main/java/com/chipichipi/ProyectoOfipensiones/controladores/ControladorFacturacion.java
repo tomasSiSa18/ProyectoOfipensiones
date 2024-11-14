@@ -1,8 +1,7 @@
 package com.chipichipi.ProyectoOfipensiones.controladores; 
 
-import java.util.Collection;
 import java.util.List;
-import java.util.Random;
+
 
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -99,10 +98,28 @@ public class ControladorFacturacion {
     public String aplicarDescuento(@PathVariable("rol") String rol,
                                    @PathVariable("id") String id,
                                    @RequestParam("facturaafectada") int idFactura,
-                                   @ModelAttribute("factura") Factura factura) {
+                                   @ModelAttribute("factura") Factura factura,
+                                   @AuthenticationPrincipal OidcUser principal) {
         
-        facturaServicio.aplicarDescuento(idFactura, factura.getValor());
-        return "redirect:/home";
+        if (principal != null) {
+            String role = (String) principal.getClaims().get("dev-to20bjeck8hvwovg.us.auth0.com/role");
+            String ids = (String) principal.getClaims().get("dev-to20bjeck8hvwovg.us.auth0.com/id");
+                                        
+            if(role.equals(rol) && ids.equals(id)){
+                facturaServicio.aplicarDescuento(idFactura, factura.getValor());
+                return "redirect:/home";
+            }else{
+                return "noAutorizado";
+            }
+
+        }else{
+            return "noAutorizado";
+        }
+
+        
+
+        
+       
     }
 
 
