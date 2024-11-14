@@ -24,5 +24,12 @@ public class FacturaServicio {
     public Collection<Factura> darFacturasEstudiante(int idEstudiante){
         return facturasRepository.darFacturasEstudiante(idEstudiante);
     }
+
+    @Transactional
+    public void aplicarDescuento(int id_factura, int amount) {
+
+        facturasRepository.aplicarDescuento(id_factura, amount*-1);
+
+    }
     
 }

@@ -1,6 +1,7 @@
 package com.chipichipi.ProyectoOfipensiones.controladores;
 
 import java.util.Collection;
+import java.util.Random;
 
 import org.springframework.ui.Model;
 import org.bson.types.ObjectId;
@@ -40,6 +41,18 @@ public class ControladorFacturacion {
         ObjectId objectId = new ObjectId(id);
         Collection<Factura> facturasResponsable = usuariosSerivicio.darFacturasResponsableEconomico(objectId);
         model.addAttribute("facturas", facturasResponsable);
+
+        return "facturas"; 
+    }
+
+    @GetMapping("/aplicarDescuento/{id}")
+    public String aplicarDescuentoFactura(@PathVariable("id") String id, Model model) {
+        
+        Random r = new Random();
+
+        System.out.println(id);
+
+        facturaServicio.aplicarDescuento(Integer.parseInt(id), 123);
 
         return "facturas"; 
     }

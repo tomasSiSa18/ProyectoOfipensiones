@@ -23,26 +23,23 @@ public class UsuariosSerivicio {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-@Transactional
-public Collection<Factura> darFacturasResponsableEconomico(ObjectId id) {
-    Collection<Factura> facturasResponsable = new ArrayList<>();
+    @Transactional
+    public Collection<Factura> darFacturasResponsableEconomico(ObjectId id) {
+        Collection<Factura> facturasResponsable = new ArrayList<>();
 
-    ResponsableEconomico responsableEconomico = usuarioRepository.findResponsableEconomico(id);
+        ResponsableEconomico responsableEconomico = usuarioRepository.findResponsableEconomico(id);
 
-    
-    if (responsableEconomico != null) {
-        for (Estudiante estudiante : responsableEconomico.getEstudiantesACargo()) {
-            Collection<Factura> facturas = facturaServicio.darFacturasEstudiante(estudiante.getId());
+        
+        if (responsableEconomico != null) {
+            for (Estudiante estudiante : responsableEconomico.getEstudiantesACargo()) {
+                Collection<Factura> facturas = facturaServicio.darFacturasEstudiante(estudiante.getId());
 
-            facturasResponsable.addAll(facturas);
+                facturasResponsable.addAll(facturas);
+            }
         }
+
+        return facturasResponsable;
     }
-
-    return facturasResponsable;
-}
-
-
-
 
     public boolean existeUsuario(int id) {
         return true;
