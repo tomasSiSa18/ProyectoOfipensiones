@@ -55,4 +55,58 @@ public class ControladorFacturacion {
         return "noAutorizado";
 
     }
+
+
+
+    @GetMapping("/{rol}/{id}/{idf}")
+    public String mostrarFacturasPorRo(
+            @PathVariable("rol") String rol, 
+            @PathVariable("id") String id, 
+            @PathVariable("idf") String idf, 
+
+            Model model, @AuthenticationPrincipal OidcUser principal) {
+        if (principal != null) {
+            String role = (String) principal.getClaims().get("dev-to20bjeck8hvwovg.us.auth0.com/role");
+            String ids = (String) principal.getClaims().get("dev-to20bjeck8hvwovg.us.auth0.com/id");
+
+
+            
+            if(role.equals(rol) && ids.equals(id)){
+                
+        
+                if(rol.equals("AdministradorOfipensiones")){
+                    model.addAttribute("facturas", facturaServicio.darFacturasAdministrador());
+                }
+                
+                return "Modificarfacturas"; 
+            }else{
+                return "noAutorizado";
+            }
+
+        
+
+        }
+        return "noAutorizado";
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 }
