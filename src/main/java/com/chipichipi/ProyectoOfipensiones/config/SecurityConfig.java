@@ -1,5 +1,7 @@
 package com.chipichipi.ProyectoOfipensiones.config;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,8 +11,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
-import java.io.IOException;
 
 
 @Configuration
@@ -34,6 +34,8 @@ public class SecurityConfig {
                 .defaultSuccessUrl("/home", true)  // Redirige a /ofipensiones/home después del login
             )
             .logout(logout -> logout
+                .logoutUrl("/logout")  // URL de logout
+                .logoutSuccessUrl("/")  // Redirige a la raíz después del logout
                 .addLogoutHandler(logoutHandler()));
 
         return http.build();
