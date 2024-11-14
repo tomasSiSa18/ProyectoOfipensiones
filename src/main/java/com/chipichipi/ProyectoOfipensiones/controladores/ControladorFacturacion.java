@@ -55,15 +55,26 @@ public class ControladorFacturacion {
 
     }
 
-    @GetMapping("/aplicarDescuento/{id}")
-    public String aplicarDescuentoFactura(@PathVariable("id") String id, Model model) {
+    @GetMapping("/{rol}/{id}/aplicarDescuento")
+    public String aplicarDescuentoFactura( @PathVariable("rol") String rol, 
+    @PathVariable("id") String id, 
+    Model model, @AuthenticationPrincipal OidcUser principal) {
+    System.out.println("asefjlafjlkasjdf");
+
+        if (principal != null) {
+            String role = (String) principal.getClaims().get("dev-to20bjeck8hvwovg.us.auth0.com/role");
+            String ids = (String) principal.getClaims().get("dev-to20bjeck8hvwovg.us.auth0.com/id");
+
+
+            
+            if(role.equals(rol) && ids.equals(id)){
         
-        Random r = new Random();
-
-        System.out.println(id);
-
-        facturaServicio.aplicarDescuento(Integer.parseInt(id), 123);
-
-        return "facturass"; 
+            model.addAttribute("facturas", facturaServicio.darFacturasAdministrador());
+            return "decuentoForm";
+            
+        }
+            
     }
+    return "noAutorizado";
+}
 }

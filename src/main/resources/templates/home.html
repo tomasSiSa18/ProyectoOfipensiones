@@ -24,7 +24,14 @@
     <div th:if="${rol == 'AdministradorOfipensiones'}">
         <form th:action="@{/facturas/{rol}/{id}(rol=${rol}, id=${id})}" method="get">
             <button type="submit">Consultar todas las facturas</button>
+           
         </form>
+
+        <form th:action="@{/facturas/{rol}/{id}/aplicarDescuento(rol=${rol}, id=${id})}" method="get">
+            <button type="submit">Aplicar descuento a factura</button>
+           
+        </form>
+
     </div>
 
 </body>
