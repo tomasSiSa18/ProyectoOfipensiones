@@ -7,7 +7,7 @@
 </head>
 <body>
     <form th:action="@{/facturas/{rol}/{id}/aplicarDescuento(rol=${rol}, id=${id})}" th:object="${factura}" method="post">
-        <label for="monto">Nuevo valor:</label>
+        <label for="monto">Descuento a aplicar:</label>
         <input type="number" id="monto" name="valor" step="0.01" min="1" th:field="*{valor}" required />
 
         <label for="facturaafectada">Factura afectada:</label>
