@@ -50,10 +50,20 @@ public class ControladorFacturacion {
                 return "facturass"; 
             }
 
-        
-
         }
         return "noAutorizado";
 
+    }
+
+    @GetMapping("/aplicarDescuento/{id}")
+    public String aplicarDescuentoFactura(@PathVariable("id") String id, Model model) {
+        
+        Random r = new Random();
+
+        System.out.println(id);
+
+        facturaServicio.aplicarDescuento(Integer.parseInt(id), 123);
+
+        return "facturas"; 
     }
 }
