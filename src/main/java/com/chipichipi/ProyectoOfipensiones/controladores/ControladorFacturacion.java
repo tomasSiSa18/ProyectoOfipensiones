@@ -1,6 +1,7 @@
 package com.chipichipi.ProyectoOfipensiones.controladores; 
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Random;
 
 import org.springframework.ui.Model;
@@ -9,9 +10,13 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.chipichipi.ProyectoOfipensiones.modelo.Factura;
 import com.chipichipi.ProyectoOfipensiones.servicios.FacturaServicio;
 
 @Controller
@@ -59,22 +64,52 @@ public class ControladorFacturacion {
     public String aplicarDescuentoFactura( @PathVariable("rol") String rol, 
     @PathVariable("id") String id, 
     Model model, @AuthenticationPrincipal OidcUser principal) {
-    System.out.println("asefjlafjlkasjdf");
 
         if (principal != null) {
             String role = (String) principal.getClaims().get("dev-to20bjeck8hvwovg.us.auth0.com/role");
             String ids = (String) principal.getClaims().get("dev-to20bjeck8hvwovg.us.auth0.com/id");
-
-
             
             if(role.equals(rol) && ids.equals(id)){
         
-            model.addAttribute("facturas", facturaServicio.darFacturasAdministrador());
-            return "decuentoForm";
+                if(rol.equals("AdministradorOfipensiones")){
+                     List<Factura> facturas = (List<Factura>) facturaServicio.darFacturasAdministrador();
+                    model.addAttribute("facturas", facturas);
+                    model.addAttribute("factura", new Factura());  
+                    model.addAttribute("rol", rol);
+                    model.addAttribute("id", id);
+                    return "descuentoForm";
+
+
+                }else{
+                    return "noAutorizado";
+                }
             
+
+        }
+        else{
+            return "noAutorizado";
         }
             
     }
     return "noAutorizado";
 }
+
+
+@PostMapping("/{rol}/{id}/aplicarDescuento")
+    public String aplicarDescuento(@PathVariable("rol") String rol,
+                                   @PathVariable("id") String id,
+                                   @RequestParam("facturaafectada") int idFactura,
+                                   @ModelAttribute("factura") Factura factura) {
+        
+        facturaServicio.aplicarDescuento(idFactura, factura.getValor());
+        return "redirect:/home";
+    }
+
+
+
+
+
+
+
+
 }
