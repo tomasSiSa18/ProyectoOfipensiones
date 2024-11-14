@@ -64,6 +64,6 @@ public class ControladorFacturacion {
 
         facturaServicio.aplicarDescuento(Integer.parseInt(id), 123);
 
-        return "facturas"; 
+        return "facturass"; 
     }
 }
