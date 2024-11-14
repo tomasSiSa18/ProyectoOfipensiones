@@ -44,5 +44,12 @@ public class FacturaServicio {
 
 
 
+
+    @Transactional
+    public void aplicarDescuento(int id_factura, int amount) {
+
+        facturasRepository.aplicarDescuento(id_factura, amount*-1);
+
+    }
     
 }

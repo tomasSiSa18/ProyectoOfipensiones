@@ -1,6 +1,7 @@
-package com.chipichipi.ProyectoOfipensiones.controladores;
+package com.chipichipi.ProyectoOfipensiones.controladores; 
 
-
+import java.util.Collection;
+import java.util.Random;
 
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
