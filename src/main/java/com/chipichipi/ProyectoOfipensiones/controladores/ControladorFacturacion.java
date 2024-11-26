@@ -1,7 +1,5 @@
 package com.chipichipi.ProyectoOfipensiones.controladores; 
 
-import java.util.List;
-
 
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +14,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.chipichipi.ProyectoOfipensiones.modelo.Factura;
-import com.chipichipi.ProyectoOfipensiones.servicios.FacturaServicio;
+import com.chipichipi.ProyectoOfipensiones.servicios.UsuariosSerivicio;
 
 @Controller
 @RequestMapping("/facturas")
 public class ControladorFacturacion {
 
-    @Autowired
-    private FacturaServicio facturaServicio;
+   
+    @Autowired 
+    private UsuariosSerivicio usuariosSerivicio;
 
 
     @GetMapping("/{rol}/{id}")
@@ -37,18 +36,18 @@ public class ControladorFacturacion {
 
 
             
-            if(role.equals(rol) && ids.equals(id)){
+            if(role.equals(rol) && ids.equals(id)  && usuariosSerivicio.MicroservicioValidadUsuario(id)){
                 int ID = Integer.parseInt(id);
                 
                 if(rol.equals("ResponsableEconomico")){
                     
-                    model.addAttribute("facturas", facturaServicio.darFacturasResponsableEconomico(ID));
+                   // model.addAttribute("facturas", facturaServicio.darFacturasResponsableEconomico(ID));
                    
                 }else if(rol.equals("GestorContable")){
-                    model.addAttribute("facturas", facturaServicio.darFacturasGestorContable(ID));
+                    //model.addAttribute("facturas", facturaServicio.darFacturasGestorContable(ID));
         
                 }else if(rol.equals("AdministradorOfipensiones")){
-                    model.addAttribute("facturas", facturaServicio.darFacturasAdministrador());
+                    //model.addAttribute("facturas", facturaServicio.darFacturasAdministrador());
                 }
                 
                 return "facturass"; 
@@ -70,12 +69,13 @@ public class ControladorFacturacion {
             
             if(role.equals(rol) && ids.equals(id)){
         
-                if(rol.equals("AdministradorOfipensiones")){
-                     List<Factura> facturas = (List<Factura>) facturaServicio.darFacturasAdministrador();
-                    model.addAttribute("facturas", facturas);
-                    model.addAttribute("factura", new Factura());  
-                    model.addAttribute("rol", rol);
-                    model.addAttribute("id", id);
+                if(rol.equals("AdministradorOfipensiones")  && usuariosSerivicio.MicroservicioValidadUsuario(id)){
+
+                    // List<Factura> facturas = (List<Factura>) facturaServicio.darFacturasAdministrador();
+                    //model.addAttribute("facturas", facturas);
+                    //model.addAttribute("factura", new Factura());  
+                    //model.addAttribute("rol", rol);
+                    //model.addAttribute("id", id);
                     return "descuentoForm";
 
 
@@ -105,8 +105,8 @@ public class ControladorFacturacion {
             String role = (String) principal.getClaims().get("dev-to20bjeck8hvwovg.us.auth0.com/role");
             String ids = (String) principal.getClaims().get("dev-to20bjeck8hvwovg.us.auth0.com/id");
                                         
-            if(role.equals(rol) && ids.equals(id)){
-                facturaServicio.aplicarDescuento(idFactura, factura.getValor());
+            if(role.equals(rol) && ids.equals(id)  && usuariosSerivicio.MicroservicioValidadUsuario(id)){
+                //facturaServicio.aplicarDescuento(idFactura, factura.getValor());
                 return "redirect:/home";
             }else{
                 return "noAutorizado";
