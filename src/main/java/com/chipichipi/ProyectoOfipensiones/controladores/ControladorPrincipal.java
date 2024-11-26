@@ -38,13 +38,17 @@ public String home(Model model, @AuthenticationPrincipal OidcUser principal) {
         String rol = (String) principal.getClaims().get("dev-to20bjeck8hvwovg.us.auth0.com/role");
         String id = (String) principal.getClaims().get("dev-to20bjeck8hvwovg.us.auth0.com/id");
 
-        model.addAttribute("rol", rol);
-        model.addAttribute("id", id);
-        String microservicioUrl = "http://localhost:8081/api/usuarios/" + id;
-        Usuario usuario = restTemplate.getForObject(microservicioUrl, Usuario.class);
-        System.out.println(usuario.getId());
-        System.out.println(usuario.getNombre());
-        return "home";
+
+
+        if(usuariosSerivicio.MicroservicioValidadUsuario(id)){
+            model.addAttribute("rol", rol);
+            model.addAttribute("id", id);
+           
+            return "home";
+        }else{
+            return "noAutorizado";
+        }
+        
     }
     return "index";
 }
