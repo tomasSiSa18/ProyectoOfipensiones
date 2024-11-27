@@ -7,6 +7,7 @@
 <body>
     <h1>Bienvenido al Portal de Pagos</h1>
     <p>Haz iniciado sesión como: <strong th:text="${rol}"></strong></p>
+    <p>Estás Autenticado Correctamente ! <strong th:text="${rol}"></strong></p>
 
     <div th:if="${rol == 'ResponsableEconomico'}">
         <form th:action="@{/facturas/{rol}/{id}(rol=${rol}, id=${id})}" method="get">
