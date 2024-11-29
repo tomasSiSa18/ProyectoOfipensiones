@@ -7,7 +7,7 @@ services:
     routes:
       - name: usuarios
         paths:
-          - "/usuarios/*"
+          - /ofipensiones/api/usuarios/todos
         strip_path: false
     
 upstreams:
