@@ -1,5 +1,6 @@
 package com.chipichipi.ProyectoOfipensiones.servicios;
 
+import java.util.Collection;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,10 @@ public class UsuariosSerivicio {
   
     public Optional<Usuario> buscarUsuarioPorId(int id) {
         return usuarioRepository.findById(id);
+    }
+
+    public Collection<Usuario> darUsuarios() {
+        return usuarioRepository.findAll();
     }
     
 
