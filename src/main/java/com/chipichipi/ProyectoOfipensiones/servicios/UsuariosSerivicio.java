@@ -18,7 +18,7 @@ public class UsuariosSerivicio {
 
 
     public boolean MicroservicioValidadUsuario(String id) {
-        String microservicioUrl = "http://34.69.84.207:8000/ofipensiones/api/usuarios/" + id;
+        String microservicioUrl = "http://104.198.148.190:8080/ofipensiones/api/usuarios/" + id;
         Usuario usuario = restTemplate.getForObject(microservicioUrl, Usuario.class);
 
         String idBD = String.valueOf(usuario.getId());
